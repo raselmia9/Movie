@@ -2,7 +2,8 @@
 
 🔵 Browser launching...
 🔵 Navigating to URL: https://livezone.pages.dev/#/movies
-🟡 Waiting for 8 seconds to let JavaScript fully render movie cards...
-🔵 Total interactive links found: 0
-🔴 Failed to extract movies. Please check if selectors need adjustment.
+🟡 Waiting for 10 seconds to let JavaScript fully render movie cards...
+🔵 Total images found on page: 25
+🟢 Successfully extracted 24 movies!
+🟢 Saved extracted data to movies_data.json successfully!
 🔵 Browser closed successfully.
