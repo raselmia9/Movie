@@ -5,5 +5,5 @@
 🟡 Waiting for 10 seconds to let JavaScript fully render movie cards...
 🔵 Total images found on page: 25
 🟢 Successfully extracted 24 movies!
-🟢 Saved extracted data to movies_data.json successfully!
+🟢 Saved extracted data successfully at: /home/runner/work/Movie/Movie/movies_data.json
 🔵 Browser closed successfully.
