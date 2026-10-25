@@ -1,38 +1,48 @@
-name: Livezone Debug Scraper
+name: Livezone Movie Scraper
 
 on:
-  workflow_dispatch: # ম্যানুয়ালি রান করানোর জন্য
+  push:
+    branches: [ main, master ]
+  workflow_dispatch: # ম্যানুয়ালি রান করানোর অপশন
   schedule:
-    - cron: '0 0 * * *' # প্রতিদিন একবার অটো রান করবে
+    - cron: '0 */6 * * *' # প্রতি ৬ ঘণ্টা পর পর অটোমেটিক রান হবে (চাইলে পরিবর্তন করতে পারেন)
 
 jobs:
-  scrape:
+  scrape-job:
     runs-on: ubuntu-latest
+
+    # গিটহবে ফাইল কমিট করার পার্মিশন দেওয়ার জন্য
     permissions:
       contents: write
 
     steps:
-      - name: Checkout repository
+      # ১. রিপোজিটরি চেকআউট করা
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
+      # ২. পাইথন সেটআপ করা
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
+          cache: 'pip'
 
-      - name: Install dependencies
+      # ৩. ডিপেন্ডেন্সি এবং প্লেরাইট ব্রাউজার ইন্সটল করা
+      - name: Install Dependencies & Playwright
         run: |
           python -m pip install --upgrade pip
-          pip install beautifulsoup4 playwright
-          playwright install chromium
+          pip install playwright beautifulsoup4
+          playwright install --with-deps chromium
 
-      - name: Run Python Script
+      # ৪. আপনার পাইথন স্ক্রিপ্ট রান করা (স্ক্রিপ্ট ফাইলের নাম scraper.py হলে)
+      - name: Run Python Scraper
         run: python scraper.py
 
-      - name: Commit and push status and HTML files
-        run: |
-          git config --global user.name "GitHub Action Bot"
-          git config --global user.email "action@github.com"
-          git add status.txt page_source.html
-          git commit -m "Update debug status and page source [skip ci]" || exit 0
-          git push
+      # ৫. জেসন ফাইল এবং স্ট্যাটাস ফাইল অটোমেটিক গিটহবে কমিট এবং পুশ করা
+      - name: Commit and Push Results
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'Auto-update movies_data.json and status.txt [skip ci]'
+          file_pattern: movies_data.json status.txt
+          commit_user_name: 'GitHub Action Bot'
+          commit_user_email: 'action@github.com'
