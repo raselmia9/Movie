@@ -1,26 +1,21 @@
 import asyncio
 import json
-from bs4 import BeautifulSoup
 from playwright.async_api import async_playwright
 
 
 async def log_status(message, color_type='blue'):
-  # কালারফুল ডট ম্যাপিং
   dots = {'green': '🟢', 'red': '🔴', 'blue': '🔵', 'yellow': '🟡'}
   dot = dots.get(color_type, '🔵')
-
   status_text = f'{dot} {message}\n'
   print(status_text.strip())
 
-  # status.txt ফাইলে স্ট্যাটাস লেখা
   with open('status.txt', 'a', encoding='utf-8') as f:
     f.write(status_text)
 
 
 async def scrape_page():
-  # প্রতিবার রান করার সময় আগের status.txt ফাইলটি পরিষ্কার করে নতুন করে শুরু করা
   with open('status.txt', 'w', encoding='utf-8') as f:
-    f.write('🚀 Scraper Started Extraction Process...\n\n')
+    f.write('🚀 Playwright Scraper Started Extraction Process...\n\n')
 
   async with async_playwright() as p:
     await log_status('Browser launching...', 'blue')
@@ -34,52 +29,52 @@ async def scrape_page():
       await page.goto(url, timeout=60000)
 
       await log_status(
-          'Waiting for 5 seconds to let JavaScript render elements...', 'yellow'
+          'Waiting for 8 seconds to let JavaScript fully render movie cards...',
+          'yellow',
       )
-      await page.wait_for_timeout(5000)
+      await page.wait_for_timeout(8000)
 
-      # সম্পূর্ণ পেজের রেন্ডার্ড HTML কোড সংগ্রহ করা
-      html_content = await page.content()
-      with open('page_source.html', 'w', encoding='utf-8') as f:
-        f.write(html_content)
-      await log_status(
-          'Successfully saved full page source to page_source.html', 'green'
-      )
+      # প্লেরাইটের নিজস্ব লকেটর ব্যবহার করে মুভির কার্ড বা লিংকগুলো সরাসরি সিলেক্ট করা
+      # সাইটের স্ট্রাকচার অনুযায়ী সাধারণত মুভি কার্ডগুলো 'a' ট্যাগের ভেতরে থাকে যাতে ছবি ও নাম থাকে
+      movie_elements = page.locator('a')
+      count = await movie_elements.count()
 
-      # BeautifulSoup দিয়ে পার্স করা
-      soup = BeautifulSoup(html_content, 'html.parser')
-
+      await log_status(f'Total interactive links found: {count}', 'blue')
       movies_data = []
 
-      # মুভি কার্ড বা লিংকগুলো খুঁজে বের করার লজিক
-      # সাইটের স্ট্রাকচার অনুযায়ী সমস্ত সম্ভাব্য 'a' ট্যাগ বা কার্ড চেক করা হচ্ছে যাতে img এবং text আছে
-      cards = soup.find_all('a')
+      for i in range(count):
+        element = movie_elements.nth(i)
 
-      await log_status('Extracting movie details (Title, Logo, Link)...', 'blue')
-
-      for card in cards:
-        img = card.find('img')
-        if img:
-          # মুভির টাইটেল খোঁজা (ট্যাগ বা ইমেজের alt অ্যাট্রিবিউট থেকে)
-          title_tag = card.find(['h3', 'h4', 'span', 'p'])
-          title = (
-              title_tag.get_text(strip=True)
-              if title_tag
-              else img.get('alt', 'N/A')
+        # কার্ডের ভেতর img আছে কি না চেক করা
+        img_locator = element.locator('img')
+        if (await img_locator.count()) > 0:
+          logo_url = (
+              await img_locator.first.get_attribute('src')
+              or await img_locator.first.get_attribute('data-src')
+              or ''
           )
+          detail_link = await element.get_attribute('href') or ''
 
-          # যদি টাইটেল খুব ছোট বা ফালতু হয়, alt চেক করতে পারেন
-          if not title or title == 'N/A':
-            title = img.get('alt', 'Unknown Movie')
+          # মুভির টাইটেল খোঁজা (হেডিং, স্প্যান বা ইমেজের alt থেকে)
+          title = ''
+          for tag in ['h3', 'h4', 'span', 'div', 'p']:
+            title_loc = element.locator(tag)
+            if (await title_loc.count()) > 0:
+              text = await title_loc.first.inner_text()
+              if text and len(text.strip()) > 1:
+                title = text.strip()
+                break
 
-          logo_url = img.get('src') or img.get('data-src') or ''
-          detail_link = card.get('href') or ''
+          # যদি টেক্সট না পাওয়া যায়, তবে alt ট্যাগ ব্যবহার করা
+          if not title:
+            title = await img_locator.first.get_attribute('alt') or 'Unknown'
 
-          # বৈধ লিংক এবং লোগো থাকলে লিস্টে যুক্ত করা
-          if detail_link and logo_url:
-            # যদি হ্যাশ বা রিলেটিভ লিংক হয়
+          # লিংক এবং লোগো থাকলে ডেটা লিস্টে যোগ করা
+          if logo_url or title != 'Unknown':
             if detail_link.startswith('/'):
               detail_link = f'https://livezone.pages.dev{detail_link}'
+            elif not detail_link.startswith('http'):
+              detail_link = f'https://livezone.pages.dev/{detail_link}'
 
             movie_info = {
                 'title': title,
@@ -87,23 +82,22 @@ async def scrape_page():
                 'detail_link': detail_link,
             }
 
-            # ডুপ্লিকেট এড়াতে চেক করা
-            if movie_info not in movies_data:
+            if movie_info not in movies_data and logo_url:
               movies_data.append(movie_info)
 
       if len(movies_data) > 0:
         await log_status(
-            f'Successfully extracted {len(movies_data)} movies!', 'green'
+            f'Successfully extracted {len(movies_data)} movies using'
+            ' Playwright!',
+            'green',
         )
 
-        # সংগৃহীত ডেটা JSON ফাইলে সেভ করা
         with open('movies_data.json', 'w', encoding='utf-8') as json_file:
           json.dump(movies_data, json_file, ensure_ascii=False, indent=4)
         await log_status(
             'Saved extracted data to movies_data.json successfully!', 'green'
         )
 
-        # কনসোলে প্রথম ৫টি মুভির তথ্য প্রিন্ট করে দেখানো
         for i, m in enumerate(movies_data[:5], 1):
           print(
               f"[{i}] Title: {m['title']} \n    Link: {m['detail_link']}\n   "
@@ -111,8 +105,8 @@ async def scrape_page():
           )
       else:
         await log_status(
-            'Failed to extract movies. Please check page_source.html'
-            ' structure.',
+            'Failed to extract movies. Please check if selectors need'
+            ' adjustment.',
             'red',
         )
 
