@@ -1,116 +1,77 @@
 import asyncio
-import json
-import time
 from bs4 import BeautifulSoup
 from playwright.async_api import async_playwright
 
-# পরীক্ষামূলকভাবে শুধু ১০টি পেজ নিয়ে কাজ করব
-CONCURRENT_TABS = 3
-TOTAL_PAGES = 10
+
+async def log_status(message, color_type='blue'):
+  # কালারফুল ডট ম্যাপিং
+  dots = {'green': '🟢', 'red': '🔴', 'blue': '🔵', 'yellow': '🟡'}
+  dot = dots.get(color_type, '🔵')
+
+  status_text = f'{dot} {message}\n'
+  print(status_text.strip())
+
+  # status.txt ফাইলে স্ট্যাটাস লেখা (টাইম ছাড়া)
+  with open('status.txt', 'a', encoding='utf-8') as f:
+    f.write(status_text)
 
 
-async def scrape_page(browser, page_number):
-  page = await browser.new_page()
-  movies_data = []
+async def scrape_page():
+  # প্রতিবার রান করার সময় আগের status.txt ফাইলটি পরিষ্কার করে নতুন করে শুরু করা
+  with open('status.txt', 'w', encoding='utf-8') as f:
+    f.write('🚀 Scraper Started Debugging Process...\n\n')
 
-  # ওয়েবসাইটের পেজিনেশন বা রাউটিং ইউআরএল (প্রয়োজন অনুযায়ী পরিবর্তন করতে হবে)
-  url = f'https://livezone.pages.dev/#/movies?page={page_number}'
-
-  try:
-    print(f'Opening page {page_number}...')
-    await page.goto(url, timeout=60000)
-    await page.wait_for_timeout(
-        4000
-    )  # JavaScript পুরোপুরি লোড হওয়ার জন্য কিছুটা বেশি সময় দেওয়া
-
-    html = await page.content()
-    soup = BeautifulSoup(html, 'html.parser')
-
-    # ⚠️ এখানে সাইটের আসল HTML ক্লাস নেম বসাতে হবে।
-    # বর্তমানে ডিফল্ট ডেমো ক্লাস দেওয়া আছে, যা আপনার সাইটের স্ট্রাকচার অনুযায়ী বদলাতে হবে।
-    items = soup.select('.movie-card')  # উদাহরণস্বরূপ ক্লাস
-
-    print(f'Page {page_number}: Found {len(items)} items.')
-
-    for item in items:
-      # সঠিক ট্যাগ বা ক্লাস দিয়ে এগুলো ধরতে হবে
-      title_elem = item.select_one('.title')
-      img_elem = item.select_one('img')
-      link_elem = item.select_one('a')
-
-      title = title_elem.text.strip() if title_elem else None
-      img = (
-          img_elem['src']
-          if img_elem and img_elem.has_attr('src')
-          else (
-              img_elem['data-src']
-              if img_elem and img_elem.has_attr('data-src')
-              else None
-          )
-      )
-      link = (
-          link_elem['href'] if link_elem and link_elem.has_attr('href') else None
-      )
-
-      # যদি কোনোটার ডেটা না পাওয়া যায়, তবে সেটি স্কিপ বা ডিবাগ করা যাবে
-      if not title and not img:
-        continue
-
-      if link and not link.startswith('http'):
-        link = f'https://livezone.pages.dev{link}'
-
-      # আপনার কাঙ্ক্ষিত ফরম্যাট অনুযায়ী ডেটা সাজানো
-      details = (
-          'Director : N/A\nCast(s) : N/A\nLanguage : Bengali\nQuality :'
-          ' WEB-DL\nResolution : 720P\nSize : 1GB'
-      )
-      date = time.strftime('%m/%d/%Y %I:%M:%S %p')
-
-      movies_data.append(
-          {
-              'title': title if title else 'N/A',
-              'details': details,
-              'img': img if img else 'N/A',
-              'date': date,
-              'link': link if link else 'N/A',
-          }
-      )
-
-    print(f'Successfully scraped Page {page_number}')
-
-  except Exception as e:
-    print(f'Error on page {page_number}: {e}')
-  finally:
-    await page.close()
-
-  return movies_data
-
-
-async def main():
   async with async_playwright() as p:
+    await log_status('Browser launching...', 'blue')
     browser = await p.chromium.launch(headless=True)
-    all_movies = []
+    page = await browser.new_page()
 
-    for i in range(1, TOTAL_PAGES + 1, CONCURRENT_TABS):
-      batch = range(i, min(i + CONCURRENT_TABS, TOTAL_PAGES + 1))
-      print(f'\n--- Processing pages {list(batch)} ---')
+    url = 'https://livezone.pages.dev/#/movies'
 
-      tasks = [scrape_page(browser, page_num) for page_num in batch]
-      results = await asyncio.gather(*tasks)
+    try:
+      await log_status(f'Navigating to URL: {url}', 'blue')
+      await page.goto(url, timeout=60000)
 
-      for page_result in results:
-        all_movies.extend(page_result)
+      await log_status(
+          'Waiting for 5 seconds to let JavaScript render elements...', 'yellow'
+      )
+      await page.wait_for_timeout(5000)
 
-    await browser.close()
+      # সম্পূর্ণ পেজের রেন্ডার্ড HTML কোড একটি ফাইলে সেভ করা
+      html_content = await page.content()
+      with open('page_source.html', 'w', encoding='utf-8') as f:
+        f.write(html_content)
+      await log_status(
+          'Successfully saved full page source to page_source.html', 'green'
+      )
 
-    # ফলাফল সেভ করা
-    with open('movies.json', 'w', encoding='utf-8') as f:
-      json.dump(all_movies, f, ensure_ascii=False, indent=2)
+      # BeautifulSoup দিয়ে এলিমেন্ট চেক করা
+      soup = BeautifulSoup(html_content, 'html.parser')
+      images = soup.find_all('img')
+      links = soup.find_all('a')
+      await log_status(
+          f'Found {len(images)} images and {len(links)} links on the page.',
+          'green',
+      )
 
-    print(
-        f'\nTest completed! Total {len(all_movies)} movies saved to movies.json'
-    )
+      if len(images) > 0 and len(links) > 0:
+        await log_status(
+            'Elements detected successfully! Ready for mapping.', 'green'
+        )
+      else:
+        await log_status(
+            'Failed to find expected elements. Check page_source.html for'
+            ' structure.',
+            'red',
+        )
+
+    except Exception as e:
+      await log_status(f'An error occurred: {str(e)}', 'red')
+
+    finally:
+      await browser.close()
+      await log_status('Browser closed successfully.', 'blue')
 
 
 if __name__ == '__main__':
-  asyncio.run(main())
+  asyncio.run(scrape_page())
