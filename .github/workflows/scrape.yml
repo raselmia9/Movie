@@ -1,4 +1,4 @@
-name: Livezone Scraper
+name: Fast Multi-Tab Movie Scraper
 
 on:
   workflow_dispatch:
@@ -6,7 +6,7 @@ on:
     - cron: '0 0 * * *'
 
 jobs:
-  run-scraper:
+  scrape:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -26,13 +26,13 @@ jobs:
           pip install beautifulsoup4 playwright
           playwright install chromium
 
-      - name: Run Python Script
+      - name: Run Async Scraper Script
         run: python scraper.py
 
-      - name: Commit and push JSON results
+      - name: Commit and push results
         run: |
           git config --global user.name "GitHub Action Bot"
           git config --global user.email "action@github.com"
           git add movies.json
-          git commit -m "Auto-update movies json data [skip ci]" || exit 0
+          git commit -m "Auto-update multi-tab scraped movies [skip ci]" || exit 0
           git push
