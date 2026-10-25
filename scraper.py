@@ -5,20 +5,17 @@ from playwright.async_api import async_playwright
 
 
 async def log_status(message, color_type='blue'):
-  # কালারফুল ডট ম্যাপিং
   dots = {'green': '🟢', 'red': '🔴', 'blue': '🔵', 'yellow': '🟡'}
   dot = dots.get(color_type, '🔵')
 
   status_text = f'{dot} {message}\n'
   print(status_text.strip())
 
-  # status.txt ফাইলে স্ট্যাটাস লেখা
   with open('status.txt', 'a', encoding='utf-8') as f:
     f.write(status_text)
 
 
 async def scrape_page():
-  # প্রতিবার রান করার সময় আগের status.txt ফাইলটি পরিষ্কার করে নতুন করে শুরু করা
   with open('status.txt', 'w', encoding='utf-8') as f:
     f.write('🚀 Playwright Scraper Started Extraction Process...\n\n')
 
@@ -39,7 +36,6 @@ async def scrape_page():
       )
       await page.wait_for_timeout(10000)
 
-      # পেজের সমস্ত <img> ট্যাগগুলো লোকেট করা
       images = page.locator('img')
       count = await images.count()
 
@@ -54,7 +50,6 @@ async def scrape_page():
             or ''
         )
 
-        # ইমেজের প্যারেন্ট বা কার্ড এলিমেন্ট থেকে টাইটেল এবং লিংক খোঁজা
         parent = img.locator(
             'xpath=ancestor::a | ancestor::div[contains(@class, "card") or'
             ' contains(@class, "movie")]'
@@ -103,7 +98,6 @@ async def scrape_page():
             f'Successfully extracted {len(movies_data)} movies!', 'green'
         )
 
-        # পূর্ণাঙ্গ পাথে movies_data.json ফাইল সেভ করা
         output_path = os.path.abspath('movies_data.json')
         with open(output_path, 'w', encoding='utf-8') as json_file:
           json.dump(movies_data, json_file, ensure_ascii=False, indent=4)
@@ -113,7 +107,6 @@ async def scrape_page():
         )
         print(f'📁 JSON File Location: {output_path}')
 
-        # কনসোলে প্রথম ৫টি মুভির ডেটা প্রিন্ট করে দেখানো
         for i, m in enumerate(movies_data[:5], 1):
           print(
               f"[{i}] Title: {m['title']} \n    Link: {m['detail_link']}\n   "
