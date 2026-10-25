@@ -1,5 +1,6 @@
 import asyncio
 import json
+import os
 from playwright.async_api import async_playwright
 
 
@@ -34,7 +35,6 @@ async def scrape_page():
       )
       await page.wait_for_timeout(10000)
 
-      # সরাসরি সমস্ত <img> ট্যাগগুলো লোকেট করা (যেহেতু প্রতিটি মুভির একটি লোগো/পোস্টার ইমেজ থাকতেই হবে)
       images = page.locator('img')
       count = await images.count()
 
@@ -49,31 +49,25 @@ async def scrape_page():
             or ''
         )
 
-        # যদি লোগো বা ইমেজ লিংক খালি থাকে, তবে বাদ দেব
-        if not logo_url or 'logo' in logo_url or 'icon' in logo_url:
-          # সাইটের লোগো বা ছোট আইকন বাদ দিয়ে মুভির পোস্টার ফিল্টার করার জন্য
-          pass
+        parent = img.locator(
+            'xpath=ancestor::a | ancestor::div[contains(@class, "card") or'
+            ' contains(@class, "movie")]'
+        ).first
 
-        # ইমেজের পেరেন্ট বা কার্ড এলিমেন্ট থেকে টাইটেল এবং লিংক খোঁজা
-        parent = img.locator('xpath=ancestor::a | ancestor::div[contains(@class, "card") or contains(@class, "movie")]').first
-        
-        detail_link = ""
-        title = ""
-        
+        detail_link = ''
+        title = ''
+
         try:
-          # যদি প্যারেন্ট কোনো লিংক হয়
           tag_name = await parent.evaluate('el => el.tagName.toLowerCase()')
           if tag_name == 'a':
             detail_link = await parent.get_attribute('href') or ''
           else:
-            # যদি কার্ডের ভেতরে কোনো <a> ট্যাগ থাকে
             link_inside = parent.locator('a').first
             if (await link_inside.count()) > 0:
               detail_link = await link_inside.get_attribute('href') or ''
-              
-          # টাইটেল খোঁজা
+
           title = await img.get_attribute('alt') or ''
-          if not title or title == '':
+          if not title:
             title_elem = parent.locator('h3, h4, span, p').first
             if (await title_elem.count()) > 0:
               title = await title_elem.inner_text()
@@ -81,7 +75,7 @@ async def scrape_page():
           pass
 
         if not title:
-          title = "Unknown Movie"
+          title = 'Unknown Movie'
 
         if logo_url:
           if detail_link.startswith('/'):
@@ -103,11 +97,15 @@ async def scrape_page():
             f'Successfully extracted {len(movies_data)} movies!', 'green'
         )
 
-        with open('movies_data.json', 'w', encoding='utf-8') as json_file:
+        # পূর্ণাঙ্গ পাথে ফাইল সেভ করা
+        output_path = os.path.abspath('movies_data.json')
+        with open(output_path, 'w', encoding='utf-8') as json_file:
           json.dump(movies_data, json_file, ensure_ascii=False, indent=4)
+
         await log_status(
-            'Saved extracted data to movies_data.json successfully!', 'green'
+            f'Saved extracted data successfully at: {output_path}', 'green'
         )
+        print(f'📁 JSON File Location: {output_path}')
 
         for i, m in enumerate(movies_data[:5], 1):
           print(
@@ -116,9 +114,7 @@ async def scrape_page():
           )
       else:
         await log_status(
-            'Still no movies found. The page might require scrolling or a'
-            ' different selector.',
-            'red',
+            'Still no movies found. Please check selectors.', 'red'
         )
 
     except Exception as e:
