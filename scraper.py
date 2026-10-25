@@ -29,67 +29,78 @@ async def scrape_page():
       await page.goto(url, timeout=60000)
 
       await log_status(
-          'Waiting for 8 seconds to let JavaScript fully render movie cards...',
+          'Waiting for 10 seconds to let JavaScript fully render movie cards...',
           'yellow',
       )
-      await page.wait_for_timeout(8000)
+      await page.wait_for_timeout(10000)
 
-      # প্লেরাইটের নিজস্ব লকেটর ব্যবহার করে মুভির কার্ড বা লিংকগুলো সরাসরি সিলেক্ট করা
-      # সাইটের স্ট্রাকচার অনুযায়ী সাধারণত মুভি কার্ডগুলো 'a' ট্যাগের ভেতরে থাকে যাতে ছবি ও নাম থাকে
-      movie_elements = page.locator('a')
-      count = await movie_elements.count()
+      # সরাসরি সমস্ত <img> ট্যাগগুলো লোকেট করা (যেহেতু প্রতিটি মুভির একটি লোগো/পোস্টার ইমেজ থাকতেই হবে)
+      images = page.locator('img')
+      count = await images.count()
 
-      await log_status(f'Total interactive links found: {count}', 'blue')
+      await log_status(f'Total images found on page: {count}', 'blue')
       movies_data = []
 
       for i in range(count):
-        element = movie_elements.nth(i)
+        img = images.nth(i)
+        logo_url = (
+            await img.get_attribute('src')
+            or await img.get_attribute('data-src')
+            or ''
+        )
 
-        # কার্ডের ভেতর img আছে কি না চেক করা
-        img_locator = element.locator('img')
-        if (await img_locator.count()) > 0:
-          logo_url = (
-              await img_locator.first.get_attribute('src')
-              or await img_locator.first.get_attribute('data-src')
-              or ''
-          )
-          detail_link = await element.get_attribute('href') or ''
+        # যদি লোগো বা ইমেজ লিংক খালি থাকে, তবে বাদ দেব
+        if not logo_url or 'logo' in logo_url or 'icon' in logo_url:
+          # সাইটের লোগো বা ছোট আইকন বাদ দিয়ে মুভির পোস্টার ফিল্টার করার জন্য
+          pass
 
-          # মুভির টাইটেল খোঁজা (হেডিং, স্প্যান বা ইমেজের alt থেকে)
-          title = ''
-          for tag in ['h3', 'h4', 'span', 'div', 'p']:
-            title_loc = element.locator(tag)
-            if (await title_loc.count()) > 0:
-              text = await title_loc.first.inner_text()
-              if text and len(text.strip()) > 1:
-                title = text.strip()
-                break
+        # ইমেজের পেరেন্ট বা কার্ড এলিমেন্ট থেকে টাইটেল এবং লিংক খোঁজা
+        parent = img.locator('xpath=ancestor::a | ancestor::div[contains(@class, "card") or contains(@class, "movie")]').first
+        
+        detail_link = ""
+        title = ""
+        
+        try:
+          # যদি প্যারেন্ট কোনো লিংক হয়
+          tag_name = await parent.evaluate('el => el.tagName.toLowerCase()')
+          if tag_name == 'a':
+            detail_link = await parent.get_attribute('href') or ''
+          else:
+            # যদি কার্ডের ভেতরে কোনো <a> ট্যাগ থাকে
+            link_inside = parent.locator('a').first
+            if (await link_inside.count()) > 0:
+              detail_link = await link_inside.get_attribute('href') or ''
+              
+          # টাইটেল খোঁজা
+          title = await img.get_attribute('alt') or ''
+          if not title or title == '':
+            title_elem = parent.locator('h3, h4, span, p').first
+            if (await title_elem.count()) > 0:
+              title = await title_elem.inner_text()
+        except:
+          pass
 
-          # যদি টেক্সট না পাওয়া যায়, তবে alt ট্যাগ ব্যবহার করা
-          if not title:
-            title = await img_locator.first.get_attribute('alt') or 'Unknown'
+        if not title:
+          title = "Unknown Movie"
 
-          # লিংক এবং লোগো থাকলে ডেটা লিস্টে যোগ করা
-          if logo_url or title != 'Unknown':
-            if detail_link.startswith('/'):
-              detail_link = f'https://livezone.pages.dev{detail_link}'
-            elif not detail_link.startswith('http'):
-              detail_link = f'https://livezone.pages.dev/{detail_link}'
+        if logo_url:
+          if detail_link.startswith('/'):
+            detail_link = f'https://livezone.pages.dev{detail_link}'
+          elif not detail_link.startswith('http') and detail_link:
+            detail_link = f'https://livezone.pages.dev/{detail_link}'
 
-            movie_info = {
-                'title': title,
-                'logo_url': logo_url,
-                'detail_link': detail_link,
-            }
+          movie_info = {
+              'title': title.strip(),
+              'logo_url': logo_url,
+              'detail_link': detail_link if detail_link else url,
+          }
 
-            if movie_info not in movies_data and logo_url:
-              movies_data.append(movie_info)
+          if movie_info not in movies_data:
+            movies_data.append(movie_info)
 
       if len(movies_data) > 0:
         await log_status(
-            f'Successfully extracted {len(movies_data)} movies using'
-            ' Playwright!',
-            'green',
+            f'Successfully extracted {len(movies_data)} movies!', 'green'
         )
 
         with open('movies_data.json', 'w', encoding='utf-8') as json_file:
@@ -105,8 +116,8 @@ async def scrape_page():
           )
       else:
         await log_status(
-            'Failed to extract movies. Please check if selectors need'
-            ' adjustment.',
+            'Still no movies found. The page might require scrolling or a'
+            ' different selector.',
             'red',
         )
 
