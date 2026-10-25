@@ -4,39 +4,62 @@ import time
 from bs4 import BeautifulSoup
 from playwright.async_api import async_playwright
 
-# একসাথে কয়টি ট্যাব বা পেজ প্রসেস হবে (আপনার পিসি বা GitHub Actions-এর ক্ষমতা অনুযায়ী ৪ থেকে ৮ দিতে পারেন)
-CONCURRENT_TABS = 5
-TOTAL_PAGES = 716
+# পরীক্ষামূলকভাবে শুধু ১০টি পেজ নিয়ে কাজ করব
+CONCURRENT_TABS = 3
+TOTAL_PAGES = 10
 
 
 async def scrape_page(browser, page_number):
   page = await browser.new_page()
   movies_data = []
 
-  # ওয়েবসাইটের পেজিনেশন বা রাউটিং ইউআরএল (প্রয়োজন অনুযায়ী পরিবর্তন করুন)
+  # ওয়েবসাইটের পেজিনেশন বা রাউটিং ইউআরএল (প্রয়োজন অনুযায়ী পরিবর্তন করতে হবে)
   url = f'https://livezone.pages.dev/#/movies?page={page_number}'
 
   try:
     print(f'Opening page {page_number}...')
     await page.goto(url, timeout=60000)
-    await page.wait_for_timeout(3000)  # কনটেন্ট লোড হওয়ার জন্য অপেক্ষা
+    await page.wait_for_timeout(
+        4000
+    )  # JavaScript পুরোপুরি লোড হওয়ার জন্য কিছুটা বেশি সময় দেওয়া
 
     html = await page.content()
     soup = BeautifulSoup(html, 'html.parser')
 
-    # মুভি কার্ডগুলোর সিলেক্টর (আপনার সাইটের HTML স্ট্রাকচার অনুযায়ী বদলাতে হবে)
-    items = soup.select('.movie-card-class')
+    # ⚠️ এখানে সাইটের আসল HTML ক্লাস নেম বসাতে হবে।
+    # বর্তমানে ডিফল্ট ডেমো ক্লাস দেওয়া আছে, যা আপনার সাইটের স্ট্রাকচার অনুযায়ী বদলাতে হবে।
+    items = soup.select('.movie-card')  # উদাহরণস্বরূপ ক্লাস
+
+    print(f'Page {page_number}: Found {len(items)} items.')
 
     for item in items:
+      # সঠিক ট্যাগ বা ক্লাস দিয়ে এগুলো ধরতে হবে
       title_elem = item.select_one('.title')
       img_elem = item.select_one('img')
       link_elem = item.select_one('a')
 
-      title = title_elem.text.strip() if title_elem else 'N/A'
-      img = img_elem['src'] if img_elem and 'src' in img_elem else 'N/A'
-      link = link_elem['href'] if link_elem and 'href' in link_elem else 'N/A'
+      title = title_elem.text.strip() if title_elem else None
+      img = (
+          img_elem['src']
+          if img_elem and img_elem.has_attr('src')
+          else (
+              img_elem['data-src']
+              if img_elem and img_elem.has_attr('data-src')
+              else None
+          )
+      )
+      link = (
+          link_elem['href'] if link_elem and link_elem.has_attr('href') else None
+      )
 
-      # আপনার দেওয়া ফরম্যাট অনুযায়ী ডেমো বা এক্সট্রাক্টেড ডিটেইলস
+      # যদি কোনোটার ডেটা না পাওয়া যায়, তবে সেটি স্কিপ বা ডিবাগ করা যাবে
+      if not title and not img:
+        continue
+
+      if link and not link.startswith('http'):
+        link = f'https://livezone.pages.dev{link}'
+
+      # আপনার কাঙ্ক্ষিত ফরম্যাট অনুযায়ী ডেটা সাজানো
       details = (
           'Director : N/A\nCast(s) : N/A\nLanguage : Bengali\nQuality :'
           ' WEB-DL\nResolution : 720P\nSize : 1GB'
@@ -45,11 +68,11 @@ async def scrape_page(browser, page_number):
 
       movies_data.append(
           {
-              'title': title,
+              'title': title if title else 'N/A',
               'details': details,
-              'img': img,
+              'img': img if img else 'N/A',
               'date': date,
-              'link': link,
+              'link': link if link else 'N/A',
           }
       )
 
@@ -68,7 +91,6 @@ async def main():
     browser = await p.chromium.launch(headless=True)
     all_movies = []
 
-    # পেজগুলোকে ব্যাচ আকারে প্যারালালি রান করার লুপ
     for i in range(1, TOTAL_PAGES + 1, CONCURRENT_TABS):
       batch = range(i, min(i + CONCURRENT_TABS, TOTAL_PAGES + 1))
       print(f'\n--- Processing pages {list(batch)} ---')
@@ -81,11 +103,13 @@ async def main():
 
     await browser.close()
 
-    # আপনার কাঙ্ক্ষিত JSON ফরম্যাটে সেভ করা
+    # ফলাফল সেভ করা
     with open('movies.json', 'w', encoding='utf-8') as f:
       json.dump(all_movies, f, ensure_ascii=False, indent=2)
 
-    print(f'\nAll done! Total {len(all_movies)} movies saved to movies.json')
+    print(
+        f'\nTest completed! Total {len(all_movies)} movies saved to movies.json'
+    )
 
 
 if __name__ == '__main__':
