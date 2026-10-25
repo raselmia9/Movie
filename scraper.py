@@ -1,230 +1,182 @@
 
 import asyncio
 import json
-import re
 from pathlib import Path
-from urllib.parse import urljoin
+from urllib.parse import urlparse
 
 from playwright.async_api import async_playwright
 
 START_URL = "https://livezone.pages.dev/#/movies"
-OUTPUT_FILE = "movie_index.json"
-MAX_PAGES = 716
-WAIT_MS = 1200
+OUTPUT = "debug_report.json"
 
-CARD_SCRIPT = r"""
-() => {
-    const results = [];
-    const seen = new Set();
+responses = []
+api_candidates = []
 
-    for (const img of document.querySelectorAll("img")) {
-        let link = img.closest("a[href]");
 
-        if (!link) {
-            let parent = img.parentElement;
+def inspect_json(data, source_url):
+    found = []
 
-            for (let i = 0; i < 6 && parent; i++) {
-                link = parent.querySelector("a[href]");
-                if (link) break;
-                parent = parent.parentElement;
-            }
-        }
+    def walk(obj):
+        if isinstance(obj, dict):
+            keys = {str(k).lower(): k for k in obj.keys()}
 
-        if (!link) continue;
+            title_key = next(
+                (keys[k] for k in ("title", "name", "moviename")
+                 if k in keys), None
+            )
+            image_key = next(
+                (keys[k] for k in (
+                    "img", "image", "poster", "thumbnail",
+                    "logo", "posterurl", "imageurl"
+                ) if k in keys), None
+            )
+            link_key = next(
+                (keys[k] for k in (
+                    "url", "link", "href", "detailurl",
+                    "watchurl", "slug", "id"
+                ) if k in keys), None
+            )
 
-        const url = link.href || "";
-        if (!url || url.startsWith("javascript:")) continue;
+            if title_key and image_key:
+                title = obj.get(title_key)
+                image = obj.get(image_key)
 
-        let card = link;
+                if isinstance(title, str) and isinstance(image, str):
+                    found.append({
+                        "title": title.strip(),
+                        "img": image,
+                        "url": str(obj.get(link_key, "")) if link_key else "",
+                        "source_api": source_url
+                    })
 
-        for (let i = 0; i < 5 && card.parentElement; i++) {
-            const text = (card.innerText || "").trim();
-            if (text.length >= 2 && text.length < 700) break;
-            card = card.parentElement;
-        }
+            for value in obj.values():
+                walk(value)
 
-        const text = (card.innerText || link.innerText || "").trim();
-        const heading = card.querySelector(
-            "h1,h2,h3,h4,[class*='title'],[class*='name']"
-        );
+        elif isinstance(obj, list):
+            for item in obj:
+                walk(item)
 
-        const title = (
-            heading?.innerText ||
-            link.getAttribute("title") ||
-            img.getAttribute("alt") ||
-            text.split("\n")[0] ||
-            ""
-        ).trim().replace(/\s+/g, " ");
-
-        const image = img.currentSrc || img.src ||
-                      img.getAttribute("data-src") || "";
-
-        const key = url + "|" + title;
-
-        if (!title || !image || seen.has(key)) continue;
-
-        seen.add(key);
-
-        results.push({
-            title: title,
-            img: image,
-            url: url,
-            card_text: text
-        });
-    }
-
-    return results;
-}
-"""
+    walk(data)
+    return found
 
 
 async def main():
-    movies = {}
-    visited_pages = set()
+    all_records = {}
+    network_urls = set()
+    api_records = {}
 
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
+        page = await browser.new_page()
 
-        page = await browser.new_page(
-            viewport={"width": 1365, "height": 900}
-        )
+        async def on_response(response):
+            url = response.url
 
-        print("Opening LiveZone Movies...")
+            if url.startswith(("data:", "blob:")):
+                return
 
+            content_type = response.headers.get("content-type", "")
+            if "json" not in content_type.lower():
+                return
+
+            network_urls.add(url)
+
+            try:
+                data = await response.json()
+                candidates = inspect_json(data, url)
+
+                if candidates:
+                    api_records[url] = candidates
+                    print(
+                        "JSON CANDIDATE:",
+                        url,
+                        "| records:", len(candidates)
+                    )
+            except Exception:
+                pass
+
+        page.on("response", on_response)
+
+        print("Opening LiveZone...")
         await page.goto(
             START_URL,
             wait_until="domcontentloaded",
             timeout=60000
         )
+        await page.wait_for_timeout(8000)
 
-        await page.wait_for_timeout(3000)
+        print("Current URL:", page.url)
+        print("Page title:", await page.title())
 
-        for page_number in range(1, MAX_PAGES + 1):
-            cards = await page.evaluate(CARD_SCRIPT)
+        # Report actual DOM counts instead of assuming card selectors.
+        dom_info = await page.evaluate("""() => ({
+            images: document.images.length,
+            anchors: document.querySelectorAll('a[href]').length,
+            buttons: document.querySelectorAll('button').length,
+            bodyText: (document.body?.innerText || '').slice(0, 2500),
+            imagesSample: Array.from(document.images).slice(0, 15).map(i => ({
+                alt: i.alt,
+                src: i.currentSrc || i.src
+            })),
+            linksSample: Array.from(document.querySelectorAll('a[href]'))
+                .slice(0, 25).map(a => ({
+                    text: (a.innerText || '').trim().slice(0, 100),
+                    href: a.href
+                }))
+        })""")
 
-            signature = tuple(
-                sorted(card["url"] for card in cards)
-            )
+        print("DOM images:", dom_info["images"])
+        print("DOM links:", dom_info["anchors"])
 
-            if signature and signature in visited_pages:
-                print("Repeated page detected. Stopping.")
-                break
+        # Give delayed API requests time to finish.
+        await page.wait_for_timeout(4000)
 
-            if signature:
-                visited_pages.add(signature)
+        # Save a diagnostic report so we can identify the actual API.
+        report = {
+            "page_title": await page.title(),
+            "current_url": page.url,
+            "dom": dom_info,
+            "json_response_urls": sorted(network_urls),
+            "api_candidates": api_records
+        }
 
-            added = 0
-
-            for card in cards:
-                title = card["title"].strip()
-                detail_url = urljoin(page.url, card["url"])
-                image_url = urljoin(page.url, card["img"])
-
-                if "#/movies" in detail_url.rstrip("/"):
-                    continue
-
-                if detail_url not in movies:
-                    movies[detail_url] = {
-                        "title": title,
-                        "img": image_url,
-                        "url": detail_url
-                    }
-                    added += 1
-
-            print(
-                f"Page {page_number}: "
-                f"{len(cards)} cards, "
-                f"{added} new, "
-                f"{len(movies)} total"
-            )
-
-            if page_number >= MAX_PAGES:
-                break
-
-            # Try common Next buttons and pagination arrows.
-            next_button = page.locator(
-                'button[aria-label*="next" i], '
-                'a[aria-label*="next" i], '
-                'button[title*="next" i], '
-                'a[title*="next" i]'
-            ).first
-
-            try:
-                if await next_button.count() and \
-                   await next_button.is_visible() and \
-                   await next_button.is_enabled():
-
-                    await next_button.click(timeout=3000)
-                    await page.wait_for_timeout(WAIT_MS)
-                    continue
-
-            except Exception:
-                pass
-
-            candidates = page.locator(
-                'button, a, [role="button"]'
-            )
-
-            clicked = False
-            count = await candidates.count()
-
-            for i in range(min(count, 250)):
-                element = candidates.nth(i)
-
-                try:
-                    if not await element.is_visible():
-                        continue
-
-                    label = (
-                        await element.inner_text()
-                    ).strip().lower()
-
-                    aria = (
-                        await element.get_attribute("aria-label")
-                        or ""
-                    ).lower()
-
-                    if label in {"next", "›", "❯", "→", "»"} \
-                       or "next" in aria:
-
-                        disabled = await element.get_attribute(
-                            "disabled"
-                        )
-
-                        aria_disabled = await element.get_attribute(
-                            "aria-disabled"
-                        )
-
-                        if disabled is None and aria_disabled != "true":
-                            await element.click(timeout=3000)
-                            await page.wait_for_timeout(WAIT_MS)
-                            clicked = True
-                            break
-
-                except Exception:
-                    continue
-
-            if not clicked:
-                print("Next-page control not found.")
-                break
+        Path(OUTPUT).write_text(
+            json.dumps(report, ensure_ascii=False, indent=2),
+            encoding="utf-8"
+        )
 
         await browser.close()
 
-    output = list(movies.values())
+    print("\nDiagnostic report saved:", OUTPUT)
+    print("JSON responses:", len(network_urls))
+    print("Candidate APIs:", len(api_records))
 
-    Path(OUTPUT_FILE).write_text(
-        json.dumps(output, ensure_ascii=False, indent=2),
-        encoding="utf-8"
-    )
+    # Produce a preliminary list if JSON objects were recognized.
+    for source, records in api_records.items():
+        for record in records:
+            title = record["title"]
+            image = record["img"]
+            url = record["url"]
 
-    print(f"\nFinished: {len(output)} movies saved.")
-    print(f"Output: {OUTPUT_FILE}")
+            if not title or not image:
+                continue
 
-    if not output:
-        print(
-            "No cards detected. The site's actual DOM/API "
-            "may require adjusting the selectors."
+            key = url or (title + "|" + image)
+            all_records[key] = {
+                "title": title,
+                "details": "",
+                "img": image,
+                "date": "",
+                "link": ""
+            }
+
+    if all_records:
+        Path("movies.json").write_text(
+            json.dumps(list(all_records.values()),
+                       ensure_ascii=False, indent=2),
+            encoding="utf-8"
         )
+        print("Preliminary movies.json:", len(all_records), "records")
 
 
 if __name__ == "__main__":
