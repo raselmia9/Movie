@@ -1,9 +1,9 @@
-name: Fast Multi-Tab Movie Scraper
+name: Livezone Debug Scraper
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # ম্যানুয়ালি রান করানোর জন্য
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 0 * * *' # প্রতিদিন একবার অটো রান করবে
 
 jobs:
   scrape:
@@ -26,13 +26,13 @@ jobs:
           pip install beautifulsoup4 playwright
           playwright install chromium
 
-      - name: Run Async Scraper Script
+      - name: Run Python Script
         run: python scraper.py
 
-      - name: Commit and push results
+      - name: Commit and push status and HTML files
         run: |
           git config --global user.name "GitHub Action Bot"
           git config --global user.email "action@github.com"
-          git add movies.json
-          git commit -m "Auto-update multi-tab scraped movies [skip ci]" || exit 0
+          git add status.txt page_source.html
+          git commit -m "Update debug status and page source [skip ci]" || exit 0
           git push
