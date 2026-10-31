@@ -1,5 +1,35 @@
 [
     {
+        "title": "The Mongoose",
+        "logo_url": "https://ctgmovies.com/imgcache/25/25cbd4aec7336f7e57405924a54f981a0c4acc54.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Meethe Mein Kya Hai",
+        "logo_url": "https://ctgmovies.com/imgcache/64/64e9009cc111562d36f53dd45011393d4782a477.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "The Strangers: Chapter 3",
+        "logo_url": "https://ctgmovies.com/imgcache/d3/d3805b94baed5e1bc31aa57b7a55afc4498e2930.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "The Birthday Gift",
+        "logo_url": "https://ctgmovies.com/imgcache/94/9444823374f00705b26da7ed50d634ecbcb9ad64.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Collision Course",
+        "logo_url": "https://ctgmovies.com/imgcache/38/3864d5c305e6e05ac83736b61026475703b0f7bb.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Apocalypse Z: New World",
+        "logo_url": "https://ctgmovies.com/imgcache/a0/a081e4d9eb1167761e0734352fecedf53acf5995.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
         "title": "Sigma",
         "logo_url": "https://ctgmovies.com/imgcache/b7/b7e8eca9fea3f7a2282ea68bbd00c8154e510654.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
@@ -60,38 +90,8 @@
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
-        "title": "Forgotten Island",
-        "logo_url": "https://ctgmovies.com/imgcache/06/066e2b526a7009be3f5e2772d9fce3ca3cbc992b.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Verity",
-        "logo_url": "https://ctgmovies.com/imgcache/e4/e45d641a1884ec9b523856ed23536de46fc543b3.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "The Cycle",
-        "logo_url": "https://ctgmovies.com/imgcache/f7/f7b3a15d87aceb78a34a6ea2f15ee9b98adb64de.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Hive",
-        "logo_url": "https://ctgmovies.com/imgcache/89/892baef02365a705fe9d696641df5fae3a0d60ff.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Bad Apples",
-        "logo_url": "https://ctgmovies.com/imgcache/80/80ab9fe3c48241c16d9969205b194b5c458fcdf6.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "The Dog Stars",
-        "logo_url": "https://ctgmovies.com/imgcache/bc/bcc9c725667badb2d15fb774a92b8d6d5e646a50.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
         "title": "Unknown Movie",
-        "logo_url": "https://ctgmovies.com/imgcache/38/38bb2f67f93560d7436bc34b413b0be57a9699e0.webp",
+        "logo_url": "https://www.5movierulz.plumbing/uploads/The-Lost-Bus.jpg",
         "detail_link": "https://livezone.pages.dev/#/movies"
     }
 ]
