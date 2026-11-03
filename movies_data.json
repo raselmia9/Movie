@@ -1,5 +1,30 @@
 [
     {
+        "title": "The Punisher: One Last Kill",
+        "logo_url": "https://ctgmovies.com/imgcache/6b/6b02dcf80747786ab706a065930d4f08c0c02f43.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Jhaad Phoonk",
+        "logo_url": "https://ctgmovies.com/imgcache/5a/5a2a3a63970d31d5af2604a9a39eeafd10e8ef31.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Aadarsha Kutumbam House-AK 47",
+        "logo_url": "https://ctgmovies.com/imgcache/8f/8f5776e0c2c3bb000c92319e1c375252e8b123fe.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "A Wicked Muse",
+        "logo_url": "https://ctgmovies.com/imgcache/d4/d408dd629aa4ae549f5c131d61ce2d929d99a602.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Zombeid",
+        "logo_url": "https://ctgmovies.com/imgcache/eb/ebd39c57dc0a5550246f508f418158d91bccf2bc.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
         "title": "The Mongoose",
         "logo_url": "https://ctgmovies.com/imgcache/25/25cbd4aec7336f7e57405924a54f981a0c4acc54.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
@@ -65,33 +90,8 @@
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
-        "title": "All That We Never Were",
-        "logo_url": "https://ctgmovies.com/imgcache/93/93241fee207aa76ac4cec43f1d04468731e77777.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Drive – The Pretenders",
-        "logo_url": "https://ctgmovies.com/imgcache/e3/e3894a8795d9609930cadaa73481129d3d892e1e.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Hopeu",
-        "logo_url": "https://ctgmovies.com/imgcache/30/300b96980eee258ac611fc0d36bff5ae82ce1e25.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Sense and Sensibility",
-        "logo_url": "https://ctgmovies.com/imgcache/6f/6f146b6d98f324d879fd20cbef41a71e32af57ad.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Ali G: Who Iz I?",
-        "logo_url": "https://ctgmovies.com/imgcache/dd/dd27309b1314a5783919b21a775f436616b91ba3.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
         "title": "Unknown Movie",
-        "logo_url": "https://www.5movierulz.plumbing/uploads/Chennai-Love-Story-Hindi.jpg",
+        "logo_url": "https://ctgmovies.com/imgcache/38/38bb2f67f93560d7436bc34b413b0be57a9699e0.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
     }
 ]
