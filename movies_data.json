@@ -1,5 +1,50 @@
 [
     {
+        "title": "Last Bullet",
+        "logo_url": "https://ctgmovies.com/imgcache/6a/6ac9e78c42baa227a708a2e1fdc5b53f11618714.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "The Mongoose",
+        "logo_url": "https://ctgmovies.com/imgcache/25/25cbd4aec7336f7e57405924a54f981a0c4acc54.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Pyre",
+        "logo_url": "https://ctgmovies.com/imgcache/8d/8daf423f95277ecad4c9eb71a51497035e385fc6.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Anakapalli",
+        "logo_url": "https://ctgmovies.com/imgcache/a9/a9f1c3f37fb1e5ecbed696c284c2ad837139af18.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Your Mother Your Mother Your Mother",
+        "logo_url": "https://ctgmovies.com/imgcache/4a/4abcae52d70eab44787f5cdd33a57c32a10e995e.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Kick",
+        "logo_url": "https://ctgmovies.com/imgcache/ba/ba837fece85230d899e99615640998a1663208f1.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Scorpion",
+        "logo_url": "https://ctgmovies.com/imgcache/b9/b93976dd10d8fc19ddcedaf2ecec5d96a81b3d51.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Primetime",
+        "logo_url": "https://ctgmovies.com/imgcache/48/486a39c118cc8f2fd81aa775e912d4ecf13cfbf6.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Beware Boiúna",
+        "logo_url": "https://ctgmovies.com/imgcache/9e/9e8df4dd9b2009cbc73c225d3d386e34032cd973.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
         "title": "The Punisher: One Last Kill",
         "logo_url": "https://ctgmovies.com/imgcache/6b/6b02dcf80747786ab706a065930d4f08c0c02f43.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
@@ -25,11 +70,6 @@
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
-        "title": "The Mongoose",
-        "logo_url": "https://ctgmovies.com/imgcache/25/25cbd4aec7336f7e57405924a54f981a0c4acc54.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
         "title": "Meethe Mein Kya Hai",
         "logo_url": "https://ctgmovies.com/imgcache/64/64e9009cc111562d36f53dd45011393d4782a477.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
@@ -47,46 +87,6 @@
     {
         "title": "Collision Course",
         "logo_url": "https://ctgmovies.com/imgcache/38/3864d5c305e6e05ac83736b61026475703b0f7bb.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Apocalypse Z: New World",
-        "logo_url": "https://ctgmovies.com/imgcache/a0/a081e4d9eb1167761e0734352fecedf53acf5995.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Sigma",
-        "logo_url": "https://ctgmovies.com/imgcache/b7/b7e8eca9fea3f7a2282ea68bbd00c8154e510654.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Immortal",
-        "logo_url": "https://ctgmovies.com/imgcache/7b/7bab30c25b5f66392ae66af9037f89101ca3e189.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Bol Bhavein Na Bol",
-        "logo_url": "https://ctgmovies.com/imgcache/c3/c302a3bbcd29ea04a4619601d9271d8c765cc75f.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Don't Trouble the Trouble",
-        "logo_url": "https://ctgmovies.com/imgcache/57/575cba88d891550020945e77c7a0f801126dfd26.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Baththa",
-        "logo_url": "https://ctgmovies.com/imgcache/ce/ce886ae20d5a7ed9f779e772f49f40e1fb9d76b6.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Jigris",
-        "logo_url": "https://ctgmovies.com/imgcache/4a/4a2951855dabfbe97191fceef312843b1f781096.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Mirzapur: The Movie",
-        "logo_url": "https://ctgmovies.com/imgcache/f7/f74198a9833b39d1db444082e939cfbd45cf0a2a.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
