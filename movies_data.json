@@ -55,13 +55,18 @@
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
-        "title": "Bol Bhavein Na Bol",
-        "logo_url": "https://ctgmovies.com/imgcache/c3/c302a3bbcd29ea04a4619601d9271d8c765cc75f.webp",
+        "title": "Sigma",
+        "logo_url": "https://ctgmovies.com/imgcache/b7/b7e8eca9fea3f7a2282ea68bbd00c8154e510654.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
         "title": "Immortal",
         "logo_url": "https://ctgmovies.com/imgcache/7b/7bab30c25b5f66392ae66af9037f89101ca3e189.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Bol Bhavein Na Bol",
+        "logo_url": "https://ctgmovies.com/imgcache/c3/c302a3bbcd29ea04a4619601d9271d8c765cc75f.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
@@ -82,6 +87,11 @@
     {
         "title": "Mirzapur: The Movie",
         "logo_url": "https://ctgmovies.com/imgcache/f7/f74198a9833b39d1db444082e939cfbd45cf0a2a.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Unknown Movie",
+        "logo_url": "https://www.5movierulz.plumbing/uploads/The-Lost-Bus.jpg",
         "detail_link": "https://livezone.pages.dev/#/movies"
     }
 ]
