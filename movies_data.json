@@ -1,5 +1,30 @@
 [
     {
+        "title": "Savage Prey",
+        "logo_url": "https://ctgmovies.com/imgcache/2c/2cef04303a33d7f6c75189e1b8540a071d9dfd86.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Model Citizen",
+        "logo_url": "https://ctgmovies.com/imgcache/d1/d171cfdc97a5c5780ff2bea4732d246d332d3560.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "A Ghost at Gilmore House",
+        "logo_url": "https://ctgmovies.com/imgcache/ac/acba11b3a6f39e33b200cd64d9d666b486448a41.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Bhai Tera Star Hai",
+        "logo_url": "https://ctgmovies.com/imgcache/b3/b3abe4dbc649fc990322c9a617aeccc63b570788.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Ramayana: Rise of a Legend",
+        "logo_url": "https://ctgmovies.com/imgcache/c6/c6cdab7f1c36f0f89bb01e8b9b256c78f19dae48.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
         "title": "Last Bullet",
         "logo_url": "https://ctgmovies.com/imgcache/6a/6ac9e78c42baa227a708a2e1fdc5b53f11618714.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
@@ -65,33 +90,8 @@
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
-        "title": "Zombeid",
-        "logo_url": "https://ctgmovies.com/imgcache/eb/ebd39c57dc0a5550246f508f418158d91bccf2bc.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Meethe Mein Kya Hai",
-        "logo_url": "https://ctgmovies.com/imgcache/64/64e9009cc111562d36f53dd45011393d4782a477.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "The Strangers: Chapter 3",
-        "logo_url": "https://ctgmovies.com/imgcache/d3/d3805b94baed5e1bc31aa57b7a55afc4498e2930.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "The Birthday Gift",
-        "logo_url": "https://ctgmovies.com/imgcache/94/9444823374f00705b26da7ed50d634ecbcb9ad64.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Collision Course",
-        "logo_url": "https://ctgmovies.com/imgcache/38/3864d5c305e6e05ac83736b61026475703b0f7bb.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
         "title": "Unknown Movie",
-        "logo_url": "https://ctgmovies.com/imgcache/38/38bb2f67f93560d7436bc34b413b0be57a9699e0.webp",
+        "logo_url": "https://www.5movierulz.plumbing/uploads/The-Lost-Bus.jpg",
         "detail_link": "https://livezone.pages.dev/#/movies"
     }
 ]
