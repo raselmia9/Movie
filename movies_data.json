@@ -1,5 +1,20 @@
 [
     {
+        "title": "Mahendragiri Vaaraahi",
+        "logo_url": "https://ctgmovies.com/imgcache/ef/ef27ae8d7a031ca8d2d64b1dc7677efb84b6ee05.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "The Odyssey",
+        "logo_url": "https://ctgmovies.com/imgcache/ba/ba7c66108ce2f7be751f156626d1d51d64b4d9a3.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Jailer 2",
+        "logo_url": "https://ctgmovies.com/imgcache/46/462c25cdb3521248dde39180e009a005eff41baa.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
         "title": "Oh..! Sukumari",
         "logo_url": "https://ctgmovies.com/imgcache/91/91415b9c6ab6a8d425995e1f701b8d62ac657dd8.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
@@ -75,23 +90,8 @@
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
-        "title": "Bhai Tera Star Hai",
-        "logo_url": "https://ctgmovies.com/imgcache/b3/b3abe4dbc649fc990322c9a617aeccc63b570788.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Ramayana: Rise of a Legend",
-        "logo_url": "https://ctgmovies.com/imgcache/c6/c6cdab7f1c36f0f89bb01e8b9b256c78f19dae48.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Last Bullet",
-        "logo_url": "https://ctgmovies.com/imgcache/6a/6ac9e78c42baa227a708a2e1fdc5b53f11618714.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
         "title": "Unknown Movie",
-        "logo_url": "https://www.5movierulz.plumbing/uploads/The-Lost-Bus.jpg",
+        "logo_url": "https://www.5movierulz.kitchen/uploads/Wonka-Poster.jpg",
         "detail_link": "https://livezone.pages.dev/#/movies"
     }
 ]
