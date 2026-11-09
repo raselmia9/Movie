@@ -4,6 +4,6 @@
 🔵 Navigating to URL: https://livezone.pages.dev/#/movies
 🟡 Waiting for 10 seconds to let JavaScript fully render movie cards...
 🔵 Total movie images found on page: 25
-🟢 Successfully extracted 20 movies with dynamic links!
+🟢 Successfully extracted 19 movies with dynamic links!
 🟢 Saved extracted data successfully at: /home/runner/work/Movie/Movie/movies_data.json
 🔵 Browser closed successfully.

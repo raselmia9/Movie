@@ -1,7 +1,27 @@
 [
     {
+        "title": "WWE Crown Jewel 2026",
+        "logo_url": "https://ctgmovies.com/imgcache/00/00149f28a184cda62fa2d390c47268968b92cb82.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Marrow",
+        "logo_url": "https://ctgmovies.com/imgcache/4b/4b8c50f8259d52cf29fb949532ec993b8972705e.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Scene",
+        "logo_url": "https://ctgmovies.com/imgcache/c5/c588610762bcc1180c689f3812703abb3bda8524.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
         "title": "Mahendragiri Vaaraahi",
         "logo_url": "https://ctgmovies.com/imgcache/ef/ef27ae8d7a031ca8d2d64b1dc7677efb84b6ee05.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Musk",
+        "logo_url": "https://ctgmovies.com/imgcache/6d/6d36659204b51de0e18d5e61f8828586e53b0768.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
@@ -70,33 +90,8 @@
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
-        "title": "The Hunt",
-        "logo_url": "https://ctgmovies.com/imgcache/24/24298edb1bdc92830599915f0d3a5440f529f761.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Savage Prey",
-        "logo_url": "https://ctgmovies.com/imgcache/2c/2cef04303a33d7f6c75189e1b8540a071d9dfd86.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Model Citizen",
-        "logo_url": "https://ctgmovies.com/imgcache/d1/d171cfdc97a5c5780ff2bea4732d246d332d3560.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "A Ghost at Gilmore House",
-        "logo_url": "https://ctgmovies.com/imgcache/ac/acba11b3a6f39e33b200cd64d9d666b486448a41.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
         "title": "Unknown Movie",
-        "logo_url": "https://ctgmovies.com/imgcache/38/38bb2f67f93560d7436bc34b413b0be57a9699e0.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Unknown Movie",
-        "logo_url": "https://www.5movierulz.plumbing/uploads/Insidious-Out-of-the-Further-Telugu.jpg",
+        "logo_url": "https://www.5movierulz.plumbing/uploads/The-Lost-Bus.jpg",
         "detail_link": "https://livezone.pages.dev/#/movies"
     }
 ]
