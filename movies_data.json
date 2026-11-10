@@ -1,5 +1,15 @@
 [
     {
+        "title": "Viruman",
+        "logo_url": "https://ctgmovies.com/imgcache/1f/1fa88dca7be40a6ae823f26e2f2f7d3865a0ade8.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "The Dark Heaven",
+        "logo_url": "https://ctgmovies.com/imgcache/dd/dd55b2c820c0dfe48406ab8fb855a85021ddfd45.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
         "title": "WWE Crown Jewel 2026",
         "logo_url": "https://ctgmovies.com/imgcache/00/00149f28a184cda62fa2d390c47268968b92cb82.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
@@ -80,18 +90,8 @@
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
-        "title": "Dilwali Diwali",
-        "logo_url": "https://ctgmovies.com/imgcache/64/64b400bc3d3ab4b456cf0076abfd46fb513e6195.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Meesaya Murukku 2",
-        "logo_url": "https://ctgmovies.com/imgcache/00/00e88d8a46163c12f22b1df168ee816bec4b557d.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
         "title": "Unknown Movie",
-        "logo_url": "https://ctgmovies.com/imgcache/38/38bb2f67f93560d7436bc34b413b0be57a9699e0.webp",
+        "logo_url": "https://www.5movierulz.plumbing/uploads/Chennai-Love-Story-Hindi.jpg",
         "detail_link": "https://livezone.pages.dev/#/movies"
     }
 ]
