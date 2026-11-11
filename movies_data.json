@@ -1,5 +1,60 @@
 [
     {
+        "title": "Babystar",
+        "logo_url": "https://ctgmovies.com/imgcache/42/42c4114bfd5a64ea9c24e737e28c580d4495c173.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Atonement",
+        "logo_url": "https://ctgmovies.com/imgcache/04/0473f2799bac66612754bc962167eef165e4be3b.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Ignition",
+        "logo_url": "https://ctgmovies.com/imgcache/02/02c18255714b78af493aae446001af22cb9bc96f.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Kankaan De Ohle",
+        "logo_url": "https://ctgmovies.com/imgcache/4e/4e9cc5a72d6803bf52c911f55c6e1c62aa371d79.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "The Intern",
+        "logo_url": "https://ctgmovies.com/imgcache/ae/ae015e980f3ceb72f5033908d38d757593da9ddc.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "The Train",
+        "logo_url": "https://ctgmovies.com/imgcache/eb/eb182099076fd9fee28938d56cf8f24dc194ae1d.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "The Oldest Person in the World",
+        "logo_url": "https://ctgmovies.com/imgcache/7e/7e4a3abb15f62580f1c0dfd8e77ea32270dbe449.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Kyma, l'onde mystérieuse",
+        "logo_url": "https://ctgmovies.com/imgcache/52/521a41d6a2cb954dec20cbaae3aac5bc62d930df.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Is the German Public Aware of This?",
+        "logo_url": "https://ctgmovies.com/imgcache/3d/3de62a3f7f76f192ed03fbf34dc7cca6bd2ceaf1.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Spices and Lies",
+        "logo_url": "https://ctgmovies.com/imgcache/76/76063da0059815406073649c80d0fb0c0a41ec15.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "The Falling",
+        "logo_url": "https://ctgmovies.com/imgcache/7a/7a4c1216450b92569ca15c5c2722d0118ceaf8db.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
         "title": "Viruman",
         "logo_url": "https://ctgmovies.com/imgcache/1f/1fa88dca7be40a6ae823f26e2f2f7d3865a0ade8.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
@@ -35,63 +90,8 @@
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
-        "title": "The Odyssey",
-        "logo_url": "https://ctgmovies.com/imgcache/ba/ba7c66108ce2f7be751f156626d1d51d64b4d9a3.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Jailer 2",
-        "logo_url": "https://ctgmovies.com/imgcache/46/462c25cdb3521248dde39180e009a005eff41baa.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Oh..! Sukumari",
-        "logo_url": "https://ctgmovies.com/imgcache/91/91415b9c6ab6a8d425995e1f701b8d62ac657dd8.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Possible Love",
-        "logo_url": "https://ctgmovies.com/imgcache/b5/b52718391d8b151fb4d0756d16ae58249122956a.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Frequency of Fear",
-        "logo_url": "https://ctgmovies.com/imgcache/71/71d44ecaaebb5d2eaf116d24a7837a268f29e365.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "The 100",
-        "logo_url": "https://ctgmovies.com/imgcache/22/2207660ac9ba52ba5e033440b0bcdea0aaf5652c.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Nooru Kodi Vaanavil",
-        "logo_url": "https://ctgmovies.com/imgcache/4f/4fd64c9e0812c0dd1d1d5dd966417a781eda4427.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "The Vvaan Force of the Forrest",
-        "logo_url": "https://ctgmovies.com/imgcache/cc/cc3f07425adb84bfba3b4b5ea9499a547e085b43.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Last Man in Tower",
-        "logo_url": "https://ctgmovies.com/imgcache/89/89d24190cb0d43397be7e8ead56421f0a2d1fe08.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "I'm Game",
-        "logo_url": "https://ctgmovies.com/imgcache/a7/a7e15ae95ff43671fd026c4a2d7f934c3ea6673c.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Heart of the Beast",
-        "logo_url": "https://ctgmovies.com/imgcache/c7/c798a2df880d4a1ad12342875a6d3a243a7abf32.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
         "title": "Unknown Movie",
-        "logo_url": "https://www.5movierulz.plumbing/uploads/The-Lost-Bus.jpg",
+        "logo_url": "https://www.5movierulz.plumbing/uploads/Chennai-Love-Story-Hindi.jpg",
         "detail_link": "https://livezone.pages.dev/#/movies"
     }
 ]
