@@ -1,7 +1,12 @@
 [
     {
-        "title": "Babystar",
-        "logo_url": "https://ctgmovies.com/imgcache/42/42c4114bfd5a64ea9c24e737e28c580d4495c173.webp",
+        "title": "Blind Game",
+        "logo_url": "https://ctgmovies.com/imgcache/f9/f9252ef39e5d469f97999aed9bd8ead29ac4a234.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Universe Designed",
+        "logo_url": "https://ctgmovies.com/imgcache/e0/e0dfdea549b2a4c347b67745298c3feb6d1f1d32.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
@@ -55,43 +60,38 @@
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
-        "title": "Viruman",
-        "logo_url": "https://ctgmovies.com/imgcache/1f/1fa88dca7be40a6ae823f26e2f2f7d3865a0ade8.webp",
+        "title": "Special Op: Rent-a-Cop",
+        "logo_url": "https://ctgmovies.com/imgcache/60/608e168c59289993a518477104a7b1dc984a8a10.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
-        "title": "The Dark Heaven",
-        "logo_url": "https://ctgmovies.com/imgcache/dd/dd55b2c820c0dfe48406ab8fb855a85021ddfd45.webp",
+        "title": "Udaala",
+        "logo_url": "https://ctgmovies.com/imgcache/47/473be9c9f195e53f7a2f1ac53785c6245d3961a8.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
-        "title": "WWE Crown Jewel 2026",
-        "logo_url": "https://ctgmovies.com/imgcache/00/00149f28a184cda62fa2d390c47268968b92cb82.webp",
+        "title": "The Floaters",
+        "logo_url": "https://ctgmovies.com/imgcache/49/4932906814537f853fec9a711176be902fa1a01c.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
-        "title": "Marrow",
-        "logo_url": "https://ctgmovies.com/imgcache/4b/4b8c50f8259d52cf29fb949532ec993b8972705e.webp",
+        "title": "Wishing Well Road",
+        "logo_url": "https://ctgmovies.com/imgcache/e9/e93bc9e9bfeb2f71a3feb222ae0bd3ade4834e9d.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
-        "title": "Scene",
-        "logo_url": "https://ctgmovies.com/imgcache/c5/c588610762bcc1180c689f3812703abb3bda8524.webp",
+        "title": "Portrait of an Artist: Stephen Curry",
+        "logo_url": "https://ctgmovies.com/imgcache/e5/e5a744c948a9dbe863b8e10cfc4b96617e68f833.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
-        "title": "Mahendragiri Vaaraahi",
-        "logo_url": "https://ctgmovies.com/imgcache/ef/ef27ae8d7a031ca8d2d64b1dc7677efb84b6ee05.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Musk",
-        "logo_url": "https://ctgmovies.com/imgcache/6d/6d36659204b51de0e18d5e61f8828586e53b0768.webp",
+        "title": "Ninho: Fame Ain’t Worth It",
+        "logo_url": "https://ctgmovies.com/imgcache/a5/a57f0c1147636ea98f95289d316a34c78e7366ef.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
         "title": "Unknown Movie",
-        "logo_url": "https://www.5movierulz.kitchen/uploads/Wonka-Poster.jpg",
+        "logo_url": "https://ctgmovies.com/imgcache/f9/f9252ef39e5d469f97999aed9bd8ead29ac4a234.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
     }
 ]
