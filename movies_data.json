@@ -1,7 +1,37 @@
 [
     {
+        "title": "Supernowa",
+        "logo_url": "https://ctgmovies.com/imgcache/35/358aadf6073995f38be44b0d23a20b6c996d7334.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Ralph's Perfekt Christmas",
+        "logo_url": "https://ctgmovies.com/imgcache/dc/dc6342efd9862fc78371456590261af94c8d21b8.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "The Cycle of Love",
+        "logo_url": "https://ctgmovies.com/imgcache/55/5550cae1e4bef993174ba586239b2b9f1fd32447.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Jailer 2",
+        "logo_url": "https://ctgmovies.com/imgcache/46/462c25cdb3521248dde39180e009a005eff41baa.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Sardaarji 3",
+        "logo_url": "https://ctgmovies.com/imgcache/4e/4e6a0b815aa173b3618fc1cffd38ce5ee67d257e.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
         "title": "Blind Game",
         "logo_url": "https://ctgmovies.com/imgcache/f9/f9252ef39e5d469f97999aed9bd8ead29ac4a234.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Babystar",
+        "logo_url": "https://ctgmovies.com/imgcache/42/42c4114bfd5a64ea9c24e737e28c580d4495c173.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
@@ -60,38 +90,8 @@
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
-        "title": "Special Op: Rent-a-Cop",
-        "logo_url": "https://ctgmovies.com/imgcache/60/608e168c59289993a518477104a7b1dc984a8a10.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Udaala",
-        "logo_url": "https://ctgmovies.com/imgcache/47/473be9c9f195e53f7a2f1ac53785c6245d3961a8.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "The Floaters",
-        "logo_url": "https://ctgmovies.com/imgcache/49/4932906814537f853fec9a711176be902fa1a01c.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Wishing Well Road",
-        "logo_url": "https://ctgmovies.com/imgcache/e9/e93bc9e9bfeb2f71a3feb222ae0bd3ade4834e9d.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Portrait of an Artist: Stephen Curry",
-        "logo_url": "https://ctgmovies.com/imgcache/e5/e5a744c948a9dbe863b8e10cfc4b96617e68f833.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Ninho: Fame Ain’t Worth It",
-        "logo_url": "https://ctgmovies.com/imgcache/a5/a57f0c1147636ea98f95289d316a34c78e7366ef.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
         "title": "Unknown Movie",
-        "logo_url": "https://ctgmovies.com/imgcache/f9/f9252ef39e5d469f97999aed9bd8ead29ac4a234.webp",
+        "logo_url": "https://www.5movierulz.plumbing/uploads/The-Lost-Bus.jpg",
         "detail_link": "https://livezone.pages.dev/#/movies"
     }
 ]
