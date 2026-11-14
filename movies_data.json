@@ -1,5 +1,70 @@
 [
     {
+        "title": "Insecta",
+        "logo_url": "https://ctgmovies.com/imgcache/4c/4ce642ec5043b364b3095240b75cb9e3009e8e32.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Street Fighter",
+        "logo_url": "https://ctgmovies.com/imgcache/ed/ed874fea016d3bc9767209a4d6c986966a6f2d15.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Avengers Endgame: Encore",
+        "logo_url": "https://ctgmovies.com/imgcache/cc/cc0e8b261ea2891909e2e13d0911c67cb43fdfb0.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Parasakthi",
+        "logo_url": "https://ctgmovies.com/imgcache/25/25678918f1e633b2cf442d04c5b04bbb3a4cc20a.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Lucky Man",
+        "logo_url": "https://ctgmovies.com/imgcache/d1/d14c4d2676e92dc3a789bed568a323adae9c3fdd.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Software Sudheer",
+        "logo_url": "https://ctgmovies.com/imgcache/9f/9ffc5be812a5c4716e4b5c9e07a1945fb59072bb.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Appan",
+        "logo_url": "https://ctgmovies.com/imgcache/96/96a796c7c80e5a4c6cc779303fff475fb65c319a.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Never Surrender",
+        "logo_url": "https://ctgmovies.com/imgcache/fa/faaef0160009a1934b07697ac208cae0593f03a4.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Prem Keetanu",
+        "logo_url": "https://ctgmovies.com/imgcache/f6/f69b20aab6dc7c106f41809d8052c6bb8b26b72f.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Heartland",
+        "logo_url": "https://ctgmovies.com/imgcache/b9/b9a58f67214b3442fa795f4694f172edd7e94b67.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "The Third Murder",
+        "logo_url": "https://ctgmovies.com/imgcache/7f/7f466cdbe0f26ec93f42e477b4ed0a119bee3a06.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Cold Storage",
+        "logo_url": "https://ctgmovies.com/imgcache/6a/6a4cafec278039eea80d9cf0358e239b8117cf1e.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Vibe",
+        "logo_url": "https://ctgmovies.com/imgcache/a1/a1190ff145eb3f8f8800779df729b2ff78e57ab6.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
         "title": "Last Man in Tower",
         "logo_url": "https://ctgmovies.com/imgcache/89/89d24190cb0d43397be7e8ead56421f0a2d1fe08.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
@@ -25,73 +90,8 @@
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
-        "title": "Ralph's Perfekt Christmas",
-        "logo_url": "https://ctgmovies.com/imgcache/dc/dc6342efd9862fc78371456590261af94c8d21b8.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "The Cycle of Love",
-        "logo_url": "https://ctgmovies.com/imgcache/55/5550cae1e4bef993174ba586239b2b9f1fd32447.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Jailer 2",
-        "logo_url": "https://ctgmovies.com/imgcache/46/462c25cdb3521248dde39180e009a005eff41baa.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Sardaarji 3",
-        "logo_url": "https://ctgmovies.com/imgcache/4e/4e6a0b815aa173b3618fc1cffd38ce5ee67d257e.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Blind Game",
-        "logo_url": "https://ctgmovies.com/imgcache/f9/f9252ef39e5d469f97999aed9bd8ead29ac4a234.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Babystar",
-        "logo_url": "https://ctgmovies.com/imgcache/42/42c4114bfd5a64ea9c24e737e28c580d4495c173.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Universe Designed",
-        "logo_url": "https://ctgmovies.com/imgcache/e0/e0dfdea549b2a4c347b67745298c3feb6d1f1d32.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Atonement",
-        "logo_url": "https://ctgmovies.com/imgcache/04/0473f2799bac66612754bc962167eef165e4be3b.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Ignition",
-        "logo_url": "https://ctgmovies.com/imgcache/02/02c18255714b78af493aae446001af22cb9bc96f.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Kankaan De Ohle",
-        "logo_url": "https://ctgmovies.com/imgcache/4e/4e9cc5a72d6803bf52c911f55c6e1c62aa371d79.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "The Intern",
-        "logo_url": "https://ctgmovies.com/imgcache/ae/ae015e980f3ceb72f5033908d38d757593da9ddc.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "The Train",
-        "logo_url": "https://ctgmovies.com/imgcache/eb/eb182099076fd9fee28938d56cf8f24dc194ae1d.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "The Oldest Person in the World",
-        "logo_url": "https://ctgmovies.com/imgcache/7e/7e4a3abb15f62580f1c0dfd8e77ea32270dbe449.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Love Always",
-        "logo_url": "https://ctgmovies.com/imgcache/02/02f5f86d8b80583306e53981d9dad7b70a9af930.webp",
+        "title": "Indian Idol: Legends Return",
+        "logo_url": "https://ctgmovies.com/imgcache/b9/b985cd1e9396ff39c0dc7d538ce5fbbcf7cfb5de.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
     }
 ]
