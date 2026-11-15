@@ -1,5 +1,20 @@
 [
     {
+        "title": "Racharikam",
+        "logo_url": "https://ctgmovies.com/imgcache/c4/c4c8a416201e2bd144daf8a8a369c873927bb1ab.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "Brawlers",
+        "logo_url": "https://ctgmovies.com/imgcache/79/790379a74c4e25501c3f8435058168128b04fa50.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
+        "title": "The Beast",
+        "logo_url": "https://ctgmovies.com/imgcache/58/5825c2eecd70220fc37953bdc8ae8d913d09e3fe.webp",
+        "detail_link": "https://livezone.pages.dev/#/movies"
+    },
+    {
         "title": "Insecta",
         "logo_url": "https://ctgmovies.com/imgcache/4c/4ce642ec5043b364b3095240b75cb9e3009e8e32.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
@@ -75,28 +90,8 @@
         "detail_link": "https://livezone.pages.dev/#/movies"
     },
     {
-        "title": "Daayra",
-        "logo_url": "https://ctgmovies.com/imgcache/01/01ee0945601be7fb8ef1b57766375fa6b585ec49.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Ramayana: Rise of a Legend",
-        "logo_url": "https://ctgmovies.com/imgcache/c6/c6cdab7f1c36f0f89bb01e8b9b256c78f19dae48.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Supernowa",
-        "logo_url": "https://ctgmovies.com/imgcache/35/358aadf6073995f38be44b0d23a20b6c996d7334.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Bigg Boss",
-        "logo_url": "https://ctgmovies.com/imgcache/d5/d56c26fa95b6ff36ebcef960aae507cb0d7999f5.webp",
-        "detail_link": "https://livezone.pages.dev/#/movies"
-    },
-    {
-        "title": "Pati Patni Aur Panga",
-        "logo_url": "https://ctgmovies.com/imgcache/f4/f4e3fac5550a3e2e61990b78fd357b20c3b65b1f.webp",
+        "title": "TV Shows - Dexter: Resurrection",
+        "logo_url": "https://ctgmovies.com/imgcache/6f/6f891963c6dd93e8fd0637accf3c799af14213db.webp",
         "detail_link": "https://livezone.pages.dev/#/movies"
     }
 ]
